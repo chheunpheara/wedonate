@@ -9,6 +9,7 @@ This is a minimal project to help generous people to raise fund while the donato
 1. `docker-compose up --build`
 2. `docker exec -it wedonateapp composer install` # In case that the composer does not work
 3. `docker exec -it wedonateapp php artisan key:generate && php artisan migrate`
+4. `npm run dev` to bundle css/js
 
 The application will be hosted at http://localhost:8000
 
