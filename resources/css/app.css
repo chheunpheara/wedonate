@@ -1,0 +1,128 @@
+.view-project {
+    max-height: 100vh;
+    overflow-y: auto;
+    position: fixed;
+    width: 25%;
+    padding-bottom: 5%;
+    /* padding-top: 2%; */
+}
+
+.card:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.project-wrapper {
+    max-height: 400px;
+}
+
+.circular_image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #eee;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.circular_image img {
+    width: 100%;
+}
+
+.top-donator {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #eee;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.top-donator img {
+    width: 100%;
+}
+
+nav {
+    z-index: 10;
+}
+
+.site-navbar {
+    margin-top: 4%;
+}
+
+.inline-icon {
+    vertical-align: bottom;
+}
+
+.fixed-modal-right {
+    background-color: rgba(000, 000, 000, .85);
+    width: 25%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+}
+
+.fixed-modal-right form {
+    margin-top: 20%;
+    color: #fff;
+}
+
+.project-thumbnail {
+    display: flex;
+    justify-content: center;
+    height: 200px;
+}
+
+.project-thumbnail img {
+    width: 100%;
+}
+
+.add-new-project {
+    border: 1px solid #eee;
+    height: 150px;
+    width: 200px;
+    justify-content: center;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-new-project span {
+    transition: transform .2s;
+}
+
+.add-new-project span {
+    font-size: 3em;
+}
+
+.add-new-project:hover {
+    background: blue;
+    border: none;
+}
+
+.add-new-project:hover span {
+    color: #fff;
+    transform: scale(1.5);
+}
+
+.fixed-modal-add-project {
+    background-color: #fff;
+    width: 35%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    box-shadow: 0 -10px 10px 0 #aaa;
+}
+
+.fixed-modal-add-project form {
+    margin-top: 10%;
+}

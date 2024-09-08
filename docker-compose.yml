@@ -1,0 +1,47 @@
+version: '3.3'
+
+services:
+  nginx:
+    container_name: wedonatewebserver
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ./nginx/:/etc/nginx/conf.d
+      - ./:/var/www/app
+    networks:
+      - wedonate
+    depends_on:
+      - db
+    
+  app:
+    container_name: wedonateapp
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./:/var/www/app
+    networks:
+      - wedonate
+
+  db:
+    container_name: wedonatedb
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=wedonatedb
+    ports:
+      - 33066:3306
+    expose:
+      - 3306
+    volumes:
+      - ./.mysqldata/:/var/lib/mysql
+    networks:
+      - wedonate
+
+networks:
+  wedonate:
+    driver: bridge
