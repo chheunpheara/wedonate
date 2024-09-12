@@ -40,5 +40,6 @@ class Login extends Component
 
     public function openRegister() {
         $this->dispatch('register-form-open');
+        $this->close();
     }
 }

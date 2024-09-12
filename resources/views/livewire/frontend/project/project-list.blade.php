@@ -12,7 +12,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="text-bottom">
-                                        <em class="text-dark creator">Creator: {{ $project->user->name }}</em>
+                                        <span class="text-dark creator">{{ $project->user->name }}</span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">

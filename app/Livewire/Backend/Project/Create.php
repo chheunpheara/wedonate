@@ -92,7 +92,8 @@ class Create extends Component
             'description' => $this->description,
             'start_date' => $this->startDate,
             'due_date' => $this->dueDate,
-            'user_id' => Auth()->user()->id
+            'user_id' => Auth()->user()->id,
+            'published' => $this->published
         ];
         if ($this->banner) {
             $this->validate(['banner' => 'mimes:jpeg,jpg,png|max:2048']);

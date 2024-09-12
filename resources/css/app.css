@@ -218,3 +218,9 @@ a.nav-link, a.dropdown-item {
     font-size: 10px;
     text-transform: uppercase;
 }
+
+.btn-follow {
+    font-size: 8px;
+    padding: 2px;
+    font-weight: bold;
+}

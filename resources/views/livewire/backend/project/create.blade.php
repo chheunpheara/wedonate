@@ -41,7 +41,7 @@
 
             <div class="col-sm-12">
                 <label for="publish">
-                    <input type="checkbox" wire:model="published"> Publish <small>(Audience will see this project once publish)</small>
+                    <input type="checkbox" id="publish" wire:model="published" @if($published) checked='checked' @endif> Publish <small>(Audience will see this project once publish)</small>
                 </label>
             </div>
 
