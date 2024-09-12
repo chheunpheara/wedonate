@@ -1,6 +1,18 @@
 <div class="row">
     <div class="fixed-modal-right">
-        <form>
+        <form wire:submit="start">
+            @if (session()->has('success'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <div>{{ session('success') }}</div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+            @if (session()->has('error'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <div>{{ session('error') }}</div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
             <h6>Fill in the form</h6>
             <div class="col-sm-12 mb-3">
                 <input type="number" min="1" placeholder="How much do you want to donate?" class="form-control" wire:model="amount">
@@ -29,12 +41,14 @@
             </div>
 
             @if($submitted)
-                <div class="qr mb-3">
-                    <div class="inner">
-                        <img src="{{ $qr }}" alt="">
-                    </div>
+            <div class="qr mb-3">
+                <div class="inner">
+                    <img src="{{ $qr }}" alt="">
                 </div>
-                <div class="text-center"><h6>Scan QR to donate</h6></div>
+            </div>
+            <div class="text-center">
+                <h6>Scan QR to donate</h6>
+            </div>
             @endif
         </form>
     </div>

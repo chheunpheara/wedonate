@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Frontend\Project;
 
+use App\Models\ProjectDonator;
+use Exception;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -14,6 +16,12 @@ class DonationForm extends Component
     #[Validate('required|min:1|numeric')]
     public $amount = 5;
     public $statement = '';
+
+    public $projectID;
+    public function mount($projectID) {
+        $this->projectID = $projectID;
+    }
+
     public function close() {
         $this->dispatch('donation-form-close');
     }
@@ -26,5 +34,26 @@ class DonationForm extends Component
     public function start() {
         $this->validate();
         $this->submitted = true;
+        try {
+            $userID = Auth()->user()->id;
+            $project = ProjectDonator::where('user_id', $userID)
+                ->where('project_id', $this->projectID)->first();
+            if (is_object($project)) {
+                ProjectDonator::where('user_id', $userID)
+                    ->where('project_id', $this->projectID)
+                    ->update(['amount' => $project->amount + $this->amount]);
+            } else {
+                ProjectDonator::create(
+                    [
+                        'project_id' => $this->projectID,
+                        'user_id' => $userID,
+                        'amount' => $this->amount
+                    ]
+                );
+            }
+            session()->flash('success', 'Support has been submitted. Thank you very much.');
+        } catch (Exception $e) {
+            session()->flash('error', 'We encountered some issues. Please try again later!');
+        }
     }
 }

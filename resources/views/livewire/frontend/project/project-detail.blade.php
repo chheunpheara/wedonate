@@ -27,6 +27,7 @@
             <h5 class="card-title">{{ $project->title }}</h5>
             <p class="card-text">{{ $project->description }}</p>
         </div>
+        @if(!$donators->isEmpty())
         <div class="row">
             <div class="col-sm-9">
                 <h3>Supporters</h3>
@@ -35,14 +36,20 @@
                     @php $donator = (object)$donator @endphp
                     <div class="col col-sm-2 mb-3" title="{{ $donator->name }}">
                         <div class="circular_image">
-                            <img src="{{ $donator->profile_photo }}" class="card-img-top" alt="...">
+                            @if(isset($donator->user->profilephoto->photo))
+                                <img src="{{ asset('storage/resource/images/' . $donator->user->profilephoto->photo) }}" class="card-img-top" alt="...">
+                            @else
+                                <span>{{ ucfirst(substr($donator->user->name, 0, 1)) }}</span>
+                            @endif
                         </div>
                     </div>
                     @endforeach
                 </div>
+                @if($totalDonator > 36)
                 <div class="row">
-                    <a href="/donators/123">View all 300+ supporters</a>
+                    <a href="/donators/{{ $projectID }}">View all {{ $totalDonator }}+ supporters</a>
                 </div>
+                @endif
             </div>
             <div class="col-sm-3">
                 <h3>Top Supporters</h3>
@@ -60,12 +67,13 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
 
     @if($formOpened)
         
         @if(Auth::check())
-        <livewire:frontend.project.donation-form />
+        <livewire:frontend.project.donation-form :$projectID />
         @else
         <livewire:frontend.user.login />
         @endif
