@@ -7,7 +7,8 @@
     /* padding-top: 2%; */
 }
 
-.card:hover {
+.card {
+    border: none;
     background-color: #eee;
     cursor: pointer;
 }
@@ -27,6 +28,20 @@
 }
 
 .circular_image img {
+    width: 100%;
+}
+
+.avatar {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #eee;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.avatar img {
     width: 100%;
 }
 
@@ -74,7 +89,9 @@ nav {
 .project-thumbnail {
     display: flex;
     justify-content: center;
+    align-items: center;
     height: 200px;
+    overflow: hidden;
 }
 
 .project-thumbnail img {
@@ -82,7 +99,7 @@ nav {
 }
 
 .add-new-project {
-    border: 1px solid #eee;
+    background: #eee;
     height: 150px;
     width: 200px;
     justify-content: center;
@@ -125,4 +142,62 @@ nav {
 
 .fixed-modal-add-project form {
     margin-top: 10%;
+}
+
+
+.detail-thumbnail {
+    margin-bottom: 1%;
+}
+
+.detail-thumbnail img {
+    border-radius: 10px;
+}
+
+.detail-description {
+    margin-top: 1%;
+    padding: 15px;
+    margin-bottom: 1%;
+    border-radius: 10px;
+    background-color: #eee;
+}
+
+.detail-description h5 {
+    text-decoration: underline;
+    margin-bottom: 1%;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.qr {
+    margin-top: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qr .inner {
+    width: 200px;
+    height: 200px;
+}
+
+.qr img {
+    width: 100%;
+    height: 100%;
+}
+
+.text-bottom {
+    position: absolute;
+    left: 15px;
+    bottom: 0;
+}
+
+.text-bottom-right {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+}
+
+.creator {
+    font-size: 10px;
+    text-transform: uppercase;
 }

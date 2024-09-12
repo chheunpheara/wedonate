@@ -13,7 +13,7 @@
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Donators</a>
+                        <a class="nav-link" href="#">Supporters</a>
                     </li>
                 </ul>
 
@@ -21,11 +21,15 @@
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Account
+                            @if(isset(Auth()->user()->profilephoto->photo))
+                            <span class="avatar"><img src="{{ asset('storage/resource/images/' . Auth()->user()->profilephoto->photo) }}" alt=""></span>
+                            @else
+                                {{ ucfirst(Auth()->user()->name) }}
+                            @endif
                         </a>
-                        <ul class="dropdown-menu" style="margin-left: -90px;">
-                            <li><a class="dropdown-item" href="#"></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="material-icons inline-icon">settings</span> Account Setting</a></li>
+                        <ul class="dropdown-menu" style="margin-left: -120px;">
+                            <li><a class="dropdown-item" href="/projects"><span class="material-icons inline-icon">campaign</span> Projects</a></li>
+                            <li><a class="dropdown-item" href="/account-settings"><span class="material-icons inline-icon">settings</span> Account Setting</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -45,5 +49,8 @@
     </nav>
     @if($formOpened)
     <livewire:frontend.user.login />
+    @endif
+    @if($registerRequested)
+        <livewire:frontend.user.register/>
     @endif
 </div>

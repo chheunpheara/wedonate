@@ -9,6 +9,7 @@ use Livewire\Component;
 
 class Login extends Component
 {
+
     #[Validate('required')]
     public $user;
 
@@ -31,9 +32,13 @@ class Login extends Component
             'password' =>  $this->password
         ];
         if (Auth::attempt($payload)) {
-            return $this->redirect('/projects');
+            return $this->redirect('/');
         }
 
         session()->flash('error', 'User or password must be wrong!');
+    }
+
+    public function openRegister() {
+        $this->dispatch('register-form-open');
     }
 }

@@ -2,47 +2,30 @@
 
 namespace App\Livewire\Frontend\Project;
 
+use App\Models\Project;
 use Livewire\Component;
 
 class ProjectList extends Component
 {
-    public $projects = [];
+
     public $viewedProject;
     public $index;
+    public $limit = 10;
+    public $offset = 0;
+    public $projects = null;
+    public $total = 0;
     public function mount() {
-        $this->projects = [
-            [
-                'title' => 'Project I',
-                'description' => 'This is the project I which everybody can help donating to help our project and people',
-                'banner' => 'https://media.istockphoto.com/id/1353332258/photo/donation-concept-the-volunteer-giving-a-donate-box-to-the-recipient-standing-against-the-wall.jpg?s=612x612&w=0&k=20&c=9AL8Uj9TTtrbHpM78kMp9fqjT_8EqpEekjdixeKUzDw=',
-                'due_date' => date('d/M/Y', strtotime('+15 days'))
-            ],
-            [
-                'title' => 'Project II',
-                'description' => 'This is the project I which everybody can help donating to help our project and people',
-                'banner' => 'https://img.freepik.com/free-photo/donate-sign-charity-campaign_53876-127165.jpg',
-                'due_date' => date('d/M/Y', strtotime('+15 days'))
-            ],
-            [
-                'title' => 'Project III',
-                'description' => 'This is the project I which everybody can help donating to help our project and people',
-                'banner' => 'https://t4.ftcdn.net/jpg/05/76/12/63/360_F_576126362_ll2tqdvXs27cDRRovBTmFCkPM9iX68iL.jpg',
-                'due_date' => date('d/M/Y', strtotime('+15 days'))
-            ],
-            [
-                'title' => 'Project IV',
-                'description' => 'This is the project I which everybody can help donating to help our project and people. This is the project I which everybody can help donating to help our project and people. This is the project I which everybody can help donating to help our project and people. This is the project I which everybody can help donating to help our project and people',
-                'banner' => 'https://www.shutterstock.com/shutterstock/photos/2145134953/display_1500/stock-photo-charity-donation-and-volunteering-concept-happy-smiling-male-volunteer-with-food-in-box-and-2145134953.jpg',
-                'due_date' => date('d/M/Y', strtotime('+15 days'))
-            ],
-            [
-                'title' => 'Project V',
-                'description' => 'This is the project V which everybody can help donating to help our project and people',
-                'banner' => 'https://plus.unsplash.com/premium_photo-1683140538884-07fb31428ca6?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZG9uYXRpb258ZW58MHx8MHx8fDA%3D',
-                'due_date' => date('d/M/Y', strtotime('+15 days'))
-            ],
-        ];
+        $this->projects = $this->getProjects($this->offset);
         $this->viewedProject = $this->projects[0];
+        $this->total = $this->getTotal();
+    }
+
+    private function getProjects($offset) {
+        return Project::where('published', true)->orderBy('created_at', 'desc')->limit($this->limit)->offset($offset)->get();
+    }
+
+    public function getTotal() {
+        return Project::where('published', true)->orderBy('created_at', 'desc')->count();
     }
 
     public function render()
@@ -52,10 +35,17 @@ class ProjectList extends Component
 
     public function viewProject($index) {
         $this->index = $index;
-        $this->viewedProject = $this->projects[$index];
+        $this->viewedProject = Project::where('published', true)->find($index);
     }
 
     public function openForm() {
         $this->dispatch('donation-form-open');
+    }
+
+    public function more() {
+        $this->offset = $this->offset + $this->limit;
+        $projects = $this->getProjects($this->offset);
+        $this->projects->concat($projects);
+        // dd($projects, $this->offset);
     }
 }

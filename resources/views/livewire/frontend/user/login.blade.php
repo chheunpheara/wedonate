@@ -9,19 +9,19 @@
             </div>
             @endif
             <div class="col-sm-12 mb-3">
-                <label for="email">Enter email address</label>
+                <label for="email">Enter email address<span class="text-danger">*</span></label>
                 <input type="email" id="email" class="form-control" wire:model="user">
                 <small>@error('user') <span class="text-danger">{{ $message }}</span> @enderror</small>
             </div>
 
             <div class="col-sm-12 mb-3">
-                <label for="password">Enter password</label>
+                <label for="password">Enter password<span class="text-danger">*</span></label>
                 <input type="password" id="password" class="form-control" wire:model="password">
                 <small>@error('password') <span class="text-danger">{{ $message }}</span> @enderror</small>
             </div>
 
             <div class="col-sm-12 mb-3">
-                Not yet hold an account? <a href="#">Register</a>
+                Create a new account? <a href="javascript:void();" wire:click.prevent="openRegister">Register</a>
             </div>
 
             <div class="col-sm-12 text-end">

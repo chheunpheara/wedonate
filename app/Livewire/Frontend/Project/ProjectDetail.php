@@ -15,6 +15,7 @@ class ProjectDetail extends Component
     protected $listeners = [
         'donation-form-close' => 'closeform',
         'donation-form-open' => 'openForm',
+        'login-form-close' => 'closeform'
     ];
 
     public function closeform() {
