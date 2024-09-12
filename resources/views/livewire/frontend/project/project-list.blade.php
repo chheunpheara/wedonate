@@ -3,7 +3,7 @@
         <div class="col-sm-3">
             <div class="row row-cols-1 row-cols-md-1 g-4 view-project">
                 @foreach($projects as $key => $project)
-                <div class="col view-inline-project" id="project-{{ $key }}" title="{{ $project->title }}" wire:click="viewProject({{ $project->id }})">
+                <div class="col view-inline-project" id="project-{{ $project->id }}" title="{{ $project->title }}" wire:click="viewProject({{ $project->id }})">
                     <div class="card">
                         <img src="{{ asset('storage/resource/images/' . $project->banner) }}" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -35,3 +35,14 @@
         </div>
     </div>
 </div>
+
+@script()
+<script>
+    $wire.on('more-project-loaded', function(e) {
+        const id = '#project-' + e.id;
+        setTimeout(() => {
+            $('.view-project').animate({scrollTop: $('.view-project').prop('scrollHeight') - $(document).height()}, 'slow');
+        }, 500);
+    });
+</script>
+@endscript

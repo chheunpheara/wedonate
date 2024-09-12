@@ -50,7 +50,9 @@ class ProjectList extends Component
     public function more() {
         $this->offset = $this->offset + $this->limit;
         $projects = $this->getProjects($this->offset);
-        $this->projects->concat($projects);
-        // dd($projects, $this->offset);
+        if (count($projects) > 0) {
+            $this->projects = $this->projects->concat($projects);
+            $this->dispatch('more-project-loaded', id: $projects[count($projects) - 1]->id);
+        }
     }
 }
