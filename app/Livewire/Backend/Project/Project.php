@@ -29,7 +29,7 @@ class Project extends Component
 
     public function render()
     {
-        $projects = ModelsProject::where('user_id', Auth()->user()->id)->orderBy('id', 'desc')->paginate(6);
+        $projects = ModelsProject::where('user_id', Auth()->user()->id)->orderBy('id', 'desc')->paginate(12);
         return view('livewire.backend.project.project', ['projects' => $projects]);
     }
 

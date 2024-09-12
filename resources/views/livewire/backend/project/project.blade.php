@@ -19,7 +19,7 @@
                 <div class="project-thumbnail"><img src="{{ asset('storage/resource/images/' . $project->banner )}}" class="card-img-top" alt="..."></div>
                 <div class="card-body">
                     <h5 class="card-title">{{ $project->title }}</h5>
-                    <p class="card-text">{{ \Illuminate\Support\Str::limit($project->description, 100, $end='...') }}</p>
+                    <p class="card-text">{{ \Illuminate\Support\Str::limit($project->description, 50, $end='...') }}</p>
                 </div>
             </div>
         </div>

@@ -14,12 +14,14 @@
         <div class="row">
             <div class="col-sm-6 text-danger">
                 <div>The project will end on <span class="material-icons inline-icon">calendar_month</span> <strong>{{ $project->due_date }}</strong></div>
-                <div><span class="material-icons inline-icon text-dark">campaign</span><small class="text-primary">{{ $project->total_donator }}</small></div>   
-                <div class="text-dark"><small class="creator"><span class="material-icons inline-icon">person</span> {{ strtoupper($project->user->name) }}</small></div> 
+                @if($project->total_donator)
+                <div><span class="material-icons inline-icon text-dark">campaign</span><small class="text-primary">{{ $project->total_donator }}</small></div>
+                @endif
+                <div class="text-dark"><small class="creator"><span class="material-icons inline-icon">person</span> {{ strtoupper($project->user->name) }}</small></div>
             </div>
             <div class="col-sm-6 text-end">
                 @if(!Auth::check() || $project->user_id != Auth()->user()->id)
-                    <button class="btn btn-outline-success btn-lg" wire:click="openForm()"><span class="material-icons inline-icon">volunteer_activism</span> Show your support</button>
+                <button class="btn btn-outline-success btn-lg" wire:click="openForm()"><span class="material-icons inline-icon">volunteer_activism</span> Show your support</button>
                 @endif
             </div>
         </div>
@@ -37,9 +39,9 @@
                     <div class="col col-sm-2 mb-3" title="{{ $donator->name }}">
                         <div class="circular_image">
                             @if(isset($donator->user->profilephoto->photo))
-                                <img src="{{ asset('storage/resource/images/' . $donator->user->profilephoto->photo) }}" class="card-img-top" alt="...">
+                            <img src="{{ asset('storage/resource/images/' . $donator->user->profilephoto->photo) }}" class="card-img-top" alt="...">
                             @else
-                                <span>{{ ucfirst(substr($donator->user->name, 0, 1)) }}</span>
+                            <span>{{ ucfirst(substr($donator->user->name, 0, 1)) }}</span>
                             @endif
                         </div>
                     </div>
@@ -71,11 +73,11 @@
     </div>
 
     @if($formOpened)
-        
-        @if(Auth::check())
-        <livewire:frontend.project.donation-form :$projectID />
-        @else
-        <livewire:frontend.user.login />
-        @endif
+
+    @if(Auth::check())
+    <livewire:frontend.project.donation-form :$projectID />
+    @else
+    <livewire:frontend.user.login />
+    @endif
     @endif
 </div>

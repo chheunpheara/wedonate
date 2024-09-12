@@ -72,6 +72,14 @@ nav {
     z-index: 10;
 }
 
+a.nav-link .inline-icon, a.dropdown-item .inline-icon {
+    font-size: 20px;
+}
+
+a.nav-link, a.dropdown-item {
+    font-size: 14px;
+}
+
 .site-navbar {
     margin-top: 4%;
 }

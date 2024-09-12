@@ -37,6 +37,8 @@ class Create extends Component
     public function mount($projectID = null) {
         $this->projectID = $projectID;
         $this->published = true;
+        $this->startDate = date('Y-m-d');
+        $this->dueDate = date('Y-m-d', strtotime('+1 months'));
         if ($this->projectID) {
             $this->project = Project::where('user_id', Auth()->user()->id)
                 ->find($this->projectID);

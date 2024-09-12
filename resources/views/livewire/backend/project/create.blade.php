@@ -47,7 +47,7 @@
 
             <div class="col-sm-12 text-end">
                 <button type="button" class="btn btn-danger" wire:click.prevent="close()">Close</button>
-                <button class="btn btn-primary" type="submit">Create</button>
+                <button class="btn btn-primary" type="submit">{{ $projectID ? 'Update' : 'Create' }}</button>
             </div>
         </form>
     </div>
