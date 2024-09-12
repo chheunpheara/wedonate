@@ -11,11 +11,17 @@ class ProjectDonator extends Model
 
     protected $guarded = ['id'];
 
+    protected $appends = ['totalDonator'];
+
     public function projects() {
         return $this->hasMany(Project::class);
     }
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function donators() {
+        return $this->belongsTo(Project::class);
     }
 }

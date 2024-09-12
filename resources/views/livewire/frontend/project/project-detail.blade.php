@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-sm-6 text-danger">
                 <div>The project will end on <span class="material-icons inline-icon">calendar_month</span> <strong>{{ $project->due_date }}</strong></div>
-                <div><span class="material-icons inline-icon text-dark">campaign</span><small class="text-primary">10k+ Supporters</small></div>   
+                <div><span class="material-icons inline-icon text-dark">campaign</span><small class="text-primary">{{ $project->total_donator }}</small></div>   
                 <div class="text-dark"><small class="creator"><span class="material-icons inline-icon">person</span> {{ strtoupper($project->user->name) }}</small></div> 
             </div>
             <div class="col-sm-6 text-end">
@@ -45,9 +45,9 @@
                     </div>
                     @endforeach
                 </div>
-                @if($totalDonator > 36)
+                @if($totalDonator > $limit)
                 <div class="row">
-                    <a href="/donators/{{ $projectID }}">View all {{ $totalDonator }}+ supporters</a>
+                    <a href="{{ url('/donators/' . $projectID) }}">View all {{ $totalDonator }}+ supporters</a>
                 </div>
                 @endif
             </div>

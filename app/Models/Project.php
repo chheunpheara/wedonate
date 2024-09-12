@@ -11,11 +11,32 @@ class Project extends Model
 
     protected $guarded = ['id'];
 
+    protected $appends = ['total_donator'];
+
     public function user() {
         return $this->belongsTo(User::class);
     }
 
     public function donators() {
         return $this->hasMany(ProjectDonator::class);
+    }
+
+    public function getTotalDonatorAttribute() {
+        $total = $this->donators->count();
+        $return = '';
+        if ($total > 0) {
+            $return = $total . ($total == 1 ? ' Supporter' : ' Supporters');
+            if ($total > 1000) {
+                if ($total < 10000) {
+                    $newTotal = $total/1000;
+                    $flag = 'K';
+                } else {
+                    $newTotal = $total/1000000;
+                    $flag = 'M';
+                }
+                $return = number_format($newTotal, 1) . $flag . ' Supporters';
+            }
+        }
+        return $return;
     }
 }

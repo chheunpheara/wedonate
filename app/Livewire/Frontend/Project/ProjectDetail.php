@@ -15,6 +15,7 @@ class ProjectDetail extends Component
     public $loginFormOpened = false;
     public $projectID;
     public $totalDonator = 0;
+    public $limit = 36;
     protected $listeners = [
         'donation-form-close' => 'closeform',
         'donation-form-open' => 'openForm',
@@ -30,7 +31,7 @@ class ProjectDetail extends Component
         $this->projectID = $this->project->id;
         $this->donators = ProjectDonator::orderBy('amount', 'desc')
             ->where('project_id', $this->projectID)
-            ->limit(36)->get();
+            ->limit($this->limit)->get();
 
         $this->totalDonator = ProjectDonator::orderBy('amount', 'desc')
         ->count();

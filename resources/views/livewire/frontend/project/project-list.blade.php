@@ -16,7 +16,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="text-bottom-right text-primary"><small>10k+ Supporters</small></div>
+                                    <div class="text-bottom-right text-primary"><small>{{ $project->total_donator }}</small></div>
                                 </div>
                             </div>
                         </div>

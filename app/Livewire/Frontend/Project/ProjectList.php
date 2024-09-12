@@ -21,7 +21,12 @@ class ProjectList extends Component
     }
 
     private function getProjects($offset) {
-        return Project::where('published', true)->orderBy('created_at', 'desc')->limit($this->limit)->offset($offset)->get();
+        return Project::where('published', true)
+        ->where('due_date', '>=', date('Y-m-d'))
+        ->orderBy('due_date', 'desc')
+        ->limit($this->limit)
+        ->offset($offset)
+        ->get();
     }
 
     public function getTotal() {
