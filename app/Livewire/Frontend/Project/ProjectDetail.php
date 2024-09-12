@@ -36,32 +36,7 @@ class ProjectDetail extends Component
         $this->totalDonator = ProjectDonator::orderBy('amount', 'desc')
         ->count();
 
-        $this->topDonators = [
-            [
-                'name' => '',
-                'profile_photo' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUHo39qpflmX8v0rHUBOKvkPDMy8Az8DrsJg&s'
-            ],
-            [
-                'name' => '',
-                'profile_photo' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn86DMGD6PaQio8nhzWKwq4UGv_iLQOwTMSA&s'
-            ],
-            [
-                'name' => '',
-                'profile_photo' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO4IPjULjl8ufw3oKgUTW3io9sUUNz1uZ9MQ&s'
-            ],
-            [
-                'name' => '',
-                'profile_photo' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREtkyXVnq0-7DoRS2HFHEjNQnfFubBkaNfmF9G-cQZZgaW3kn_rhF2MFXm2gIBm2m8qYA&usqp=CAU'
-            ],
-            [
-                'name' => '',
-                'profile_photo' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd7Z6DVRuf4mREjG10cbRLjKPE9Gux4hT61kDjPxCZmtvsIbEZ8UhcGxKzvs8prs1m5CQ&usqp=CAU'
-            ],
-            [
-                'name' => '',
-                'profile_photo' => 'https://marketplace.canva.com/EAFltLW8CT0/1/0/1600w/canva-pastel-cute-cartoon-illustration-girl-avatar-6V9Fo6XRPLQ.jpg'
-            ]
-        ];
+        $this->topDonators = $this->project->top_donators;
     }
 
     public function openForm() {

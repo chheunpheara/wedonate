@@ -11,7 +11,7 @@ class Project extends Model
 
     protected $guarded = ['id'];
 
-    protected $appends = ['total_donator'];
+    protected $appends = ['total_donator', 'top_donators'];
 
     public function user() {
         return $this->belongsTo(User::class);
@@ -38,5 +38,9 @@ class Project extends Model
             }
         }
         return $return;
+    }
+
+    public function getTopDonatorsAttribute() {
+        return $this->donators()->where('amount', '>', 500)->orderBy('amount', 'desc')->limit(20)->get();
     }
 }

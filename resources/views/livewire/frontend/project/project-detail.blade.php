@@ -61,7 +61,7 @@
                         @php $donator = (object)$donator @endphp
                         <div class="col col-sm-2 mb-3" title="{{ $donator->name }}">
                             <div class="top-donator">
-                                <img src="{{ $donator->profile_photo }}" class="card-img-top" alt="...">
+                                <img src="{{ asset('storage/resource/images/' . $donator->user->profilephoto->photo) }}" class="card-img-top" alt="...">
                             </div>
                         </div>
                         @endforeach
