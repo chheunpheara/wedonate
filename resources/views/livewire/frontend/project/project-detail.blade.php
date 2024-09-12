@@ -21,7 +21,7 @@
             </div>
             <div class="col-sm-6 text-end">
                 @if(!Auth::check() || $project->user_id != Auth()->user()->id)
-                <button class="btn btn-outline-success btn-lg" wire:click="openForm()"><span class="material-icons inline-icon">volunteer_activism</span> Show your support</button>
+                <button class="btn btn-outline-success btn-sm" wire:click="openForm()"><span class="material-icons inline-icon">volunteer_activism</span> Show your support</button>
                 @endif
             </div>
         </div>
@@ -31,8 +31,25 @@
         </div>
         @if(!$donators->isEmpty())
         <div class="row">
-            <div class="col-sm-9">
-                <h3>Supporters</h3>
+            @if(!$topDonators->isEmpty())
+            <div class="col-sm-12 mb-5">
+                <h6>Top Supporters</h6>
+                <div class="container">
+                    <div class="row">
+                        @foreach($topDonators as $donator)
+                        @php $donator = (object)$donator @endphp
+                        <div class="col col-sm-2 mb-3" title="{{ $donator->name }}">
+                            <div class="top-donator">
+                                <img src="{{ asset('storage/resource/images/' . $donator->user->profilephoto->photo) }}" class="card-img-top" alt="...">
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            @endif
+            <div class="col-sm-12">
+                <h6>Supporters</h6>
                 <div class="row">
                     @foreach($donators as $donator)
                     @php $donator = (object)$donator @endphp
@@ -52,21 +69,6 @@
                     <a href="{{ url('/donators/' . $projectID) }}">View all {{ $totalDonator }}+ supporters</a>
                 </div>
                 @endif
-            </div>
-            <div class="col-sm-3">
-                <h3>Top Supporters</h3>
-                <div class="container">
-                    <div class="row">
-                        @foreach($topDonators as $donator)
-                        @php $donator = (object)$donator @endphp
-                        <div class="col col-sm-2 mb-3" title="{{ $donator->name }}">
-                            <div class="top-donator">
-                                <img src="{{ asset('storage/resource/images/' . $donator->user->profilephoto->photo) }}" class="card-img-top" alt="...">
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
             </div>
         </div>
         @endif

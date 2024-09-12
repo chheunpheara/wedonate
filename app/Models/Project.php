@@ -11,7 +11,7 @@ class Project extends Model
 
     protected $guarded = ['id'];
 
-    protected $appends = ['total_donator', 'top_donators'];
+    // protected $appends = ['total_donator', 'top_donators'];
 
     public function user() {
         return $this->belongsTo(User::class);

@@ -55,10 +55,6 @@ class Create extends Component
         $this->dispatch('close-project-add');
     }
 
-    public function updated($propertyName) {
-        $this->validateOnly($propertyName);
-    }
-
     public function save() {
         $this->validate();
         if ($this->projectID) {

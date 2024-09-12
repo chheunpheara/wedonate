@@ -2,7 +2,7 @@
     max-height: 100vh;
     overflow-y: auto;
     position: fixed;
-    width: 25%;
+    width: 50%;
     padding-bottom: 5%;
     /* padding-top: 2%; */
 }
@@ -104,15 +104,13 @@ a.nav-link, a.dropdown-item {
 }
 
 .project-thumbnail {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-    overflow: hidden;
+    background-size: cover;
+    height: 150px;
+    background-repeat: no-repeat;
 }
 
 .project-thumbnail img {
-    width: 100%;
+    height: 100%;
 }
 
 .add-new-project {

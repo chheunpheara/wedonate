@@ -1,14 +1,14 @@
 <div>
     <div class="row">
-        <div class="col-sm-3">
-            <div class="row row-cols-1 row-cols-md-1 g-4 view-project">
+        <div class="col-sm-6">
+            <div class="row view-project">
                 @foreach($projects as $key => $project)
-                <div class="col view-inline-project" id="project-{{ $project->id }}" title="{{ $project->title }}" wire:click="viewProject({{ $project->id }})">
+                <div class="col-sm-4 mb-3 view-inline-project" id="project-{{ $project->id }}" title="{{ $project->title }}" wire:click="viewProject({{ $project->id }})">
                     <div class="card">
-                        <img src="{{ asset('storage/resource/images/' . $project->banner) }}" class="card-img-top" alt="...">
+                        <div class="project-thumbnail" style="background-image: url({{ asset('storage/resource/images/' . $project->banner) }})"></div>
                         <div class="card-body">
                             <h5 class="card-title">{{ $project->title }}</h5>
-                            <p class="card-text">{{ \Illuminate\Support\Str::limit($project->description, 150, $end='...') }}</p>
+                            <p class="card-text">{{ \Illuminate\Support\Str::limit($project->description, 80, $end='...') }}</p>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="text-bottom">
@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-6">
             @if($viewedProject)
             <livewire:frontend.project.project-detail :$viewedProject :key="$index" />
             @endif
