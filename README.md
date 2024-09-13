@@ -15,6 +15,9 @@ The application will be hosted at http://localhost:8000
 
 ![Screenshot](./screenshot.png)
 
+#Technical issues
+- Support Traffic chart cannot be loaded using nested Livewire. Inline javascript does not work. The workaround is to create dummy route to host the chart and embed it into the project detail
+
 #Todo
 - Payment integration
 - Real-time update donators once payment is made

@@ -31,6 +31,13 @@
             <h5 class="card-title">{{ $project->title }}</h5>
             <p class="card-text">{{ $project->description }}</p>
         </div>
+        
+        @if(!$project->donators->isEmpty())
+        <div class="col-sm-12 mb-5">
+            <embed src="/dummy-chart/{{ \App\Models\User::cryptit($project->id) }}" width="100%" height="300"/>
+        </div>
+        @endif
+
         @if(!$donators->isEmpty())
         <div class="row">
             @if(!$topDonators->isEmpty())
@@ -55,7 +62,7 @@
                 <div class="row">
                     @foreach($donators as $donator)
                     @php $donator = (object)$donator @endphp
-                    <div class="col col-sm-2 mb-3" title="{{ $donator->name }}">
+                    <div class="col col-sm-1 mb-3" title="{{ $donator->name }}">
                         <div class="circular_image">
                             @if(isset($donator->user->profilephoto->photo))
                             <img src="{{ asset('storage/resource/images/' . $donator->user->profilephoto->photo) }}" class="card-img-top" alt="...">

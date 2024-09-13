@@ -31,9 +31,11 @@ class ProjectDetail extends Component
         $this->projectID = $this->project->id;
         $this->donators = ProjectDonator::orderBy('amount', 'desc')
             ->where('project_id', $this->projectID)
-            ->limit($this->limit)->get();
+            ->limit($this->limit)
+            ->get();
 
         $this->totalDonator = ProjectDonator::orderBy('amount', 'desc')
+        ->where('project_id', $this->projectID)
         ->count();
 
         $this->topDonators = $this->project->top_donators;

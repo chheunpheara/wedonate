@@ -11,7 +11,6 @@ class ProjectDonator extends Model
 
     protected $guarded = ['id'];
 
-    protected $appends = ['totalDonator'];
 
     public function projects() {
         return $this->hasMany(Project::class);
