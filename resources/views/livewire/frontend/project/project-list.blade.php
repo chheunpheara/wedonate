@@ -7,7 +7,7 @@
                     <div class="card">
                         <div class="project-thumbnail" style="background-image: url({{ asset('storage/resource/images/' . $project->banner) }})"></div>
                         <div class="card-body">
-                            <h5 class="card-title">{{ $project->title }}</h5>
+                        <h5 class="card-title text-primary">{{ \Illuminate\Support\Str::limit($project->title, 22, $end='...') }}</h5>
                             <p class="card-text">{{ \Illuminate\Support\Str::limit($project->description, 80, $end='...') }}</p>
                             <div class="row">
                                 <div class="col-sm-6">

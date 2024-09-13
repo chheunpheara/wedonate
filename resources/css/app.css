@@ -17,8 +17,8 @@ a {
 
 .card {
     border: none;
-    background-color: #eee;
     cursor: pointer;
+    border: .95px solid #eee;
 }
 
 .project-wrapper {

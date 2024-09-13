@@ -2,7 +2,7 @@
     <div class="search-project-wrapper">
     <div class="row search-project">
         <div class="col-sm-12 mb-3 search-box">
-        <input type="text" class="form-control" placeholder="Search donation programs..." autofocus="autofocus" wire:keydown="search" wire:model="keyword">
+        <input type="text" class="form-control" placeholder="Search programs..." autofocus="autofocus" wire:keydown="search" wire:model="keyword">
         </div>
         <div class="col-sm-12 search-result">
             <div class="row">

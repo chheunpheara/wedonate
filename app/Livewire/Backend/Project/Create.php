@@ -60,7 +60,7 @@ class Create extends Component
         if ($this->projectID) {
             $this->update();
         } else {
-            $this->validate(['banner' => 'required|mimes:jpeg,jpg,png|max:2048']);
+            $this->validate(['banner' => 'required|mimes:jpeg,jpg,png,webp|max:2048']);
             $this->create();
         }
         // $this->dispatch('project-saved');
@@ -92,7 +92,7 @@ class Create extends Component
             'published' => $this->published
         ];
         if ($this->banner) {
-            $this->validate(['banner' => 'mimes:jpeg,jpg,png|max:2048']);
+            $this->validate(['banner' => 'mimes:jpeg,jpg,png,webp|max:2048']);
             $data['banner'] = $this->banner->hashName();
             $this->banner->store(path: 'public/resource/images');
         }

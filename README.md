@@ -18,7 +18,9 @@ The application will be hosted at http://localhost:8000
 #Todo
 - Payment integration
 - Real-time update donators once payment is made
-- Project filter
-- Share project single view (SEO included)
+- Share program single view (SEO included)
 - Help Center page
 - Improve template and layout
+- Localization
+- Donation analytic to each program
+- Donator can manage his/her donation transaction event
