@@ -28,10 +28,22 @@ class Create extends Component
 
     public $project;
 
+    public $donator = 0;
+
+    public $openProfileForm = false;
+
+    public $profileId;
+
+    public $creator;
+
     protected $rules = [
         'title' => 'required',
         'startDate' => 'required|date',
         'dueDate' => 'required|date'
+    ];
+
+    protected $listeners = [
+        'close-profile-view' => 'closeProfileForm'
     ];
 
     public function mount($projectID = null) {
@@ -48,6 +60,7 @@ class Create extends Component
             $this->dueDate = $this->project->due_date;
             $this->preview = $this->project->banner;
             $this->published = $this->project->published;
+            $this->donator = $this->project->donators->count();
         }
     }
 
@@ -107,5 +120,16 @@ class Create extends Component
     public function render()
     {
         return view('livewire.backend.project.create');
+    }
+
+    public function viewProfile($id) {
+        $this->openProfileForm = true;
+        $this->profileId = $id;
+        $this->creator = $this->project->user_id;
+    }
+
+    public function closeProfileForm() {
+        $this->profileId = null;
+        $this->openProfileForm = false;
     }
 }

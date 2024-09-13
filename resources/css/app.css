@@ -120,6 +120,7 @@ a.nav-link, a.dropdown-item {
 
 .project-thumbnail {
     background-size: cover;
+    background-position: center;
     height: 150px;
     background-repeat: no-repeat;
     border-top-left-radius: 5px;

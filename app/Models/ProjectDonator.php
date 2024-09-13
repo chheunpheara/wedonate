@@ -16,6 +16,10 @@ class ProjectDonator extends Model
         return $this->hasMany(Project::class);
     }
 
+    public function project() {
+        return $this->belongsTo(Project::class);
+    }
+
     public function user() {
         return $this->belongsTo(User::class);
     }

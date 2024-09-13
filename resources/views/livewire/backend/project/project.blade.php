@@ -10,7 +10,7 @@
         <div class="mb-5"></div>
         <div class="text-center">
             <span class="material-icons text-warning" style="font-size: 5em">search</span>
-            <p>No project has been created</p>
+            <p>No program has been created</p>
         </div>
         @endif
         @foreach($projects as $key => $project)

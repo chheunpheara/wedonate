@@ -13,7 +13,7 @@
         </div>
         <div class="row">
             <div class="col-sm-6 text-danger">
-                <div>The project will end on <span class="material-icons inline-icon">calendar_month</span> <strong>{{ $project->due_date }}</strong></div>
+                <div>The program will end on <span class="material-icons inline-icon">calendar_month</span> <strong>{{ $project->due_date }}</strong></div>
                 @if($project->total_donator)
                 <div><span class="material-icons inline-icon text-dark">campaign</span><small class="text-primary">{{ $project->total_donator }}</small></div>
                 @endif

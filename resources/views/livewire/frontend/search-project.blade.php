@@ -2,12 +2,14 @@
     <div class="search-project-wrapper">
     <div class="row search-project">
         <div class="col-sm-12 mb-3 search-box">
-        <input type="text" class="form-control" placeholder="Search programs..." autofocus="autofocus" wire:keydown="search" wire:model="keyword">
+        <div x-data x-init="$refs.keyword.focus()">
+        <input type="text" class="form-control" placeholder="Search programs..." autofocus="autofocus" wire:keydown="search" wire:model="keyword" x-ref="keyword">
+        </div>
         </div>
         <div class="col-sm-12 search-result">
             <div class="row">
                 @foreach($projects as $key => $project)
-                <div class="col-sm-12 mb-3 view-inline-project" id="project-{{ $project->id }}" title="{{ $project->title }}" wire:click="viewProject({{ $project->id }})">
+                <div class="col-sm-6 mb-3 view-inline-project" id="project-{{ $project->id }}" title="{{ $project->title }}" wire:click="viewProject({{ $project->id }})">
                     <div class="card">
                         <div class="project-thumbnail" style="background-image: url({{ asset('storage/resource/images/' . $project->banner) }})"></div>
                         <div class="card-body">
