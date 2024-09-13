@@ -28,7 +28,11 @@
     <div class="">
         {{ $projects->onEachSide(5)->links() }}
     </div>
-    @if($formVisible || $projectID)
-        <livewire:backend.project.create :$projectID/>
+    @if($formVisible)
+        <livewire:backend.project.create key="{{ now() }}"/>
+    @endif
+
+    @if($projectID)
+        <livewire:backend.project.create :$projectID key="{{ now() }}"/>
     @endif
 </div>

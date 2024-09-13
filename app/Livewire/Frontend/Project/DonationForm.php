@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Frontend\Project;
 
+use App\Models\Follower;
+use App\Models\Project;
 use App\Models\ProjectDonator;
 use Exception;
 use Livewire\Attributes\Validate;
@@ -18,8 +20,10 @@ class DonationForm extends Component
     public $statement = '';
 
     public $projectID;
+    public $project;
     public function mount($projectID) {
         $this->projectID = $projectID;
+        $this->project = Project::find($this->projectID);
     }
 
     public function close() {
@@ -51,9 +55,23 @@ class DonationForm extends Component
                     ]
                 );
             }
+            if ($this->follow) {
+                $this->followCreator();
+            } else {
+                $this->unfollow();
+            }
+
             session()->flash('success', 'Support has been submitted. Thank you very much.');
         } catch (Exception $e) {
             session()->flash('error', 'We encountered some issues. Please try again later!');
         }
+    }
+
+    public function followCreator() {
+        Follower::follow($this->project->user->id);
+    }
+
+    public function unfollow() {
+        Follower::unfollow($this->project->user->id);
     }
 }

@@ -20,6 +20,7 @@ class Project extends Component
 
     public function openFormAdd() {
         $this->formVisible = true;
+        $this->projectID = null;
     }
     
     public function closeFormAdd() {

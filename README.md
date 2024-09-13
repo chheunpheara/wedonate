@@ -14,3 +14,11 @@ This is a minimal project to help generous people to raise fund while the donato
 The application will be hosted at http://localhost:8000
 
 ![Screenshot](./screenshot.png)
+
+#Todo
+- Payment integration
+- Real-time update donators once payment is made
+- Project filter
+- Share project single view (SEO included)
+- Help Center page
+- Improve template and layout

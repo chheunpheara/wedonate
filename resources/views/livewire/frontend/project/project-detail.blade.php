@@ -17,7 +17,9 @@
                 @if($project->total_donator)
                 <div><span class="material-icons inline-icon text-dark">campaign</span><small class="text-primary">{{ $project->total_donator }}</small></div>
                 @endif
-                <div class="text-dark"><small class="creator"><span class="material-icons inline-icon">person</span> {{ strtoupper($project->user->name) }}</small> <button class="btn btn-sm btn-primary btn-follow">Follow</button></div>
+                <div class="text-dark">
+                    <livewire:frontend.follow :$project/>
+                </div>
             </div>
             <div class="col-sm-6 text-end">
                 @if(!Auth::check() || $project->user_id != Auth()->user()->id)

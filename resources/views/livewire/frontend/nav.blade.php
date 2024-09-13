@@ -13,7 +13,10 @@
                         <a class="nav-link active" aria-current="page" href="/"><span class="material-icons inline-icon">home</span> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><span class="material-icons inline-icon">help</span> Help Center</a>
+                        <a href="" class="nav-link"><span class="material-icons inline-icon">trending_up</span> Trends</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/helps') }}"><span class="material-icons inline-icon">help</span> Help Center</a>
                     </li>
                 </ul>
 
@@ -39,6 +42,9 @@
                 </ul>
                 @else
                 <ul class="navbar-nav">
+                    <li>
+                        <input type="text" class="form-control" placeholder="Search programs" wire:click.prevent="search">
+                    </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link" wire:click="openLogin()"><span class="material-icons inline-icon text-warning">person</span> Sign in</a>
                     </li>
@@ -52,5 +58,8 @@
     @endif
     @if($registerRequested)
         <livewire:frontend.user.register/>
+    @endif
+    @if($searchClicked)
+        <livewire:frontend.search-project/>
     @endif
 </div>

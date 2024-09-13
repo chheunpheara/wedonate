@@ -1,3 +1,11 @@
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
 .view-project {
     max-height: 100vh;
     overflow-y: auto;
@@ -89,24 +97,34 @@ a.nav-link, a.dropdown-item {
 }
 
 .fixed-modal-right {
-    background-color: rgba(000, 000, 000, .85);
+    background-color: rgba(255, 255, 255, .95);
     width: 25%;
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     z-index: 9999;
+    -webkit-animation-name: slide-right;
+    -webkit-animation-duration: 0.5s;
+    box-shadow: 0 -5px 10px 0 #333;
+}
+
+@keyframes slide-right {
+    from {right: -100%;}
+    to {right: 0}
 }
 
 .fixed-modal-right form {
     margin-top: 20%;
-    color: #fff;
+    color: #000;
 }
 
 .project-thumbnail {
     background-size: cover;
     height: 150px;
     background-repeat: no-repeat;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .project-thumbnail img {
@@ -153,6 +171,8 @@ a.nav-link, a.dropdown-item {
     bottom: 0;
     z-index: 9999;
     box-shadow: 0 -10px 10px 0 #aaa;
+    -webkit-animation-name: slide-right;
+    -webkit-animation-duration: .5s;
 }
 
 .fixed-modal-add-project form {
@@ -210,11 +230,16 @@ a.nav-link, a.dropdown-item {
     position: absolute;
     bottom: 0;
     right: 10px;
+    font-size: 12px;
 }
 
 .creator {
     font-size: 10px;
     text-transform: uppercase;
+}
+
+.creator a {
+    color: #333;
 }
 
 .btn-follow {
@@ -224,7 +249,38 @@ a.nav-link, a.dropdown-item {
 }
 
 .project-detail {
-    background-color: #eee;
-    border-radius: 8px;
+    box-shadow: 0 0 8px -3px #333;
+    border-left: 1px solid #f4e9e9;
     padding-top: 10px;
+}
+
+.search-project-wrapper {
+    position: fixed;
+    background: rgba(000, 000, 000, .6);
+    width: 35%;
+    z-index: 10000;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    padding-top: 5%;
+}
+.search-project {
+    width: 30%;
+    margin: auto;
+    padding-top: 15px;
+    background-color: #fff;
+    position: relative;
+    border-radius: 5px;
+}
+
+.search-box {
+    position: absolute;
+}
+
+.search-result {
+    margin-top: 9%;
+    max-height: 60vh;
+    overflow: auto;
+    position: relative;
 }

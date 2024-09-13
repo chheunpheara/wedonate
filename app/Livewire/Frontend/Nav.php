@@ -12,11 +12,17 @@ class Nav extends Component
         'login-form-close' => 'closeform',
         'login-form-open'   => 'openLogin',
         'register-form-open' => 'openregister',
-        'register-form-close' => 'closeRegister'
+        'register-form-close' => 'closeRegister',
+        'modal-search-hidden' => 'closeSearchModal'
     ];
 
     public $formOpened = false;
     public $registerRequested = false;
+    public $searchClicked = false;
+
+    public function closeSearchModal() {
+        $this->searchClicked = false;
+    }
 
     public function openLogin() {
         $this->formOpened = true;
@@ -44,5 +50,9 @@ class Nav extends Component
     public function logout() {
         Auth::logout();
         return $this->redirect('/');
+    }
+
+    public function search() {
+        $this->searchClicked = true;
     }
 }

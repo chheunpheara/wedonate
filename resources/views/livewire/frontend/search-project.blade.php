@@ -1,9 +1,13 @@
 <div>
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="row view-project">
+    <div class="search-project-wrapper">
+    <div class="row search-project">
+        <div class="col-sm-12 mb-3 search-box">
+        <input type="text" class="form-control" placeholder="Search donation programs..." autofocus="autofocus" wire:keydown="search" wire:model="keyword">
+        </div>
+        <div class="col-sm-12 search-result">
+            <div class="row">
                 @foreach($projects as $key => $project)
-                <div class="col-sm-4 mb-3 view-inline-project" id="project-{{ $project->id }}" title="{{ $project->title }}" wire:click="viewProject({{ $project->id }})">
+                <div class="col-sm-12 mb-3 view-inline-project" id="project-{{ $project->id }}" title="{{ $project->title }}" wire:click="viewProject({{ $project->id }})">
                     <div class="card">
                         <div class="project-thumbnail" style="background-image: url({{ asset('storage/resource/images/' . $project->banner) }})"></div>
                         <div class="card-body">
@@ -28,21 +32,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6">
-            @if($viewedProject)
-            <livewire:frontend.project.project-detail :$viewedProject :key="$index" />
-            @endif
+        <div class="col-sm-12 text-end">
+            <button class="btn btn-default btn-sm" wire:click.prevent="close">Close</button>
         </div>
     </div>
+    </div>
 </div>
-
-@script()
-<script>
-    $wire.on('more-project-loaded', function(e) {
-        const id = '#project-' + e.id;
-        setTimeout(() => {
-            $('.view-project').animate({scrollTop: $('.view-project').prop('scrollHeight') - $(document).height()}, 'slow');
-        }, 500);
-    });
-</script>
-@endscript
