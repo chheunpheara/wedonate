@@ -6,7 +6,7 @@
     </div>
     <div class="row">
         @foreach($projects as $key => $project)
-        <div class="col-sm-3 mb-4 view-inline-project" id="project-{{ $project->id }}" title="{{ $project->title }}" wire:click.prevent="view({{ $project }})">
+        <div class="col-sm-3 mb-4 view-inline-project" id="project-{{ $project->id }}" title="{{ $project->title }}" wire:click.prevent="view({{ $project }})" wire:navigate>
             <div class="card">
                 <div class="project-thumbnail" style="background-image: url({{ asset('storage/resource/images/' . $project->banner) }})"></div>
                 <div class="card-body">
@@ -27,3 +27,8 @@
     </div>
 </div>
 </div>
+@script()
+    <script>
+        $wire.on('single-view', (e) => Livewire.navigate('/project/' + e.id));
+    </script>
+@endscript

@@ -3,6 +3,7 @@
 namespace App\Livewire\Backend\Project;
 
 use App\Models\Project;
+use App\Models\ProjectDonator;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -36,6 +37,8 @@ class Create extends Component
 
     public $creator;
 
+    public $raisedAmount = 0;
+
     protected $rules = [
         'title' => 'required',
         'startDate' => 'required|date',
@@ -61,6 +64,7 @@ class Create extends Component
             $this->preview = $this->project->banner;
             $this->published = $this->project->published;
             $this->donator = $this->project->donators->count();
+            $this->raisedAmount = ProjectDonator::where('project_id', $this->projectID)->sum('amount');
         }
     }
 

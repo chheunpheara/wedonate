@@ -63,6 +63,6 @@ class Creator extends Component
 
     public function view($project) {
         $id = User::cryptit($project['id']);
-        return $this->redirect(url('/project/' . $id));
+        $this->dispatch('single-view', id: $id);
     }
 }

@@ -2,7 +2,7 @@
     <div id="chart"></div>
 </div>
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js" data-navigate-once></script>
 <script>
     let funds = '{!! $data !!}';
     funds = JSON.parse(funds);

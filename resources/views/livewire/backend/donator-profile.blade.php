@@ -11,6 +11,9 @@
                         @endif
                     </div>
                     <h5 class="text-center">{{ ucfirst($user->name) }}</h5>
+                    <div class="close" wire:click.prevent="close">
+                        <span class="material-icons" title="Close">close</span>
+                    </div>
                 </div>
                 <div class="col-sm-12 mb-3" style="max-height: 600px; overflow: auto">
                     <h5>Activities</h5>
@@ -32,9 +35,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                </div>
-                <div class="col-sm-12">
-                    <button class="btn btn-danger btn-sm" wire:click.prevent="close">Close</button>
                 </div>
             </div>
         </div>

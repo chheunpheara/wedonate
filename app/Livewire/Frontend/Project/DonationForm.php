@@ -6,6 +6,7 @@ use App\Models\Follower;
 use App\Models\Project;
 use App\Models\ProjectDonator;
 use Exception;
+use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -41,7 +42,9 @@ class DonationForm extends Component
         try {
             $userID = Auth()->user()->id;
             $project = ProjectDonator::where('user_id', $userID)
-                ->where('project_id', $this->projectID)->first();
+                ->where('project_id', $this->projectID)
+                ->where(DB::raw('substr(created_at, 1, 10)'), '=', date('Y-m-d'))
+                ->first();
             if (is_object($project)) {
                 ProjectDonator::where('user_id', $userID)
                     ->where('project_id', $this->projectID)

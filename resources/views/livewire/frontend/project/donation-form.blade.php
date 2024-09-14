@@ -1,6 +1,7 @@
 <div class="row">
     <div class="fixed-modal-right">
         <form wire:submit="start">
+            <h3>We Donate</h3>
             @if (session()->has('success'))
             <div class="alert alert-success alert-dismissible" role="alert">
                 <div>{{ session('success') }}</div>

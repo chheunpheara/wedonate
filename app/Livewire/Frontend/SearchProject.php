@@ -51,6 +51,6 @@ class SearchProject extends Component
 
     public function viewProject($id) {
         $id = User::cryptit($id);
-        return $this->redirect(url('/project/' . $id));
+        $this->dispatch('single-view', id: $id);
     }
 }

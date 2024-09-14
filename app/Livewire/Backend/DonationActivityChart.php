@@ -1,26 +1,21 @@
 <?php
 
-namespace App\Livewire\Frontend;
+namespace App\Livewire\Backend;
 
 use App\Models\ProjectDonator;
-use App\Models\User;
 use Illuminate\Support\Facades\DB;
-use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-#[Layout('components.layouts.blank')]
-class DonationChart extends Component
+class DonationActivityChart extends Component
 {
-    public $projectID;
-    public $data = [];
 
-    public function mount($project) {
-        $this->projectID = (int)User::decryptit($project);
-        $this->getData();
+    public $data;
+    public function mount() {
+        $this->getActivityChart();
     }
 
-    private function getData() {
-        $items = ProjectDonator::where('project_id', $this->projectID)
+    private function getActivityChart() {
+        $items = ProjectDonator::where('user_id', Auth()->user()->id)
         ->select(DB::raw('substr(created_at, 1, 10) as date, sum(amount) as total'))
         ->groupBy(DB::raw('substr(created_at, 1, 10)'))->orderBy(DB::raw('substr(created_at, 1, 10)'), 'desc')->get()->toArray();
         $data = [['Date', 'Amount($)']];
@@ -31,12 +26,8 @@ class DonationChart extends Component
         $this->data = json_encode($data);
     }
 
-    public function updated() {
-        $this->getData();
-    }
-
     public function render()
     {
-        return view('livewire.frontend.donation-chart');
+        return view('livewire.backend.donation-activity-chart');
     }
 }

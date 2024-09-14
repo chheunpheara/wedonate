@@ -40,3 +40,8 @@
     </div>
     </div>
 </div>
+@script()
+<script>
+        $wire.on('single-view', (e) => Livewire.navigate('/project/' + e.id));
+    </script>
+@endscript

@@ -114,7 +114,7 @@ a.nav-link, a.dropdown-item {
 }
 
 .fixed-modal-right form {
-    margin-top: 20%;
+    margin-top: 5%;
     color: #000;
 }
 
@@ -176,7 +176,7 @@ a.nav-link, a.dropdown-item {
 }
 
 .fixed-modal-add-project form {
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 
@@ -283,4 +283,8 @@ a.nav-link, a.dropdown-item {
     max-height: 72vh;
     overflow: auto;
     position: relative;
+}
+
+.close {
+    position: absolute; top: 2px; right: 2px; cursor: pointer;
 }

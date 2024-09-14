@@ -1,7 +1,7 @@
 <div class="row">
     <div class="fixed-modal-right">
         <form wire:submit="authenticate">
-
+        <h3>We Donate</h3>
             @if (session()->has('error'))
             <div class="alert alert-danger alert-dismissible" role="alert">
                 <div>{{ session('error') }}</div>
@@ -31,3 +31,8 @@
         </form>
     </div>
 </div>
+@script()
+    <script>
+        $wire.on('login-success', () => Livewire.navigate('/'))
+    </script>
+@endscript

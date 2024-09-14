@@ -1,7 +1,7 @@
 <div class="row">
     <div class="fixed-modal-right">
         <form wire:submit="register">
-
+            <h3>We Donate</h3>
             @if (session()->has('error'))
             <div class="alert alert-danger alert-dismissible" role="alert">
                 <div>{{ session('error') }}</div>

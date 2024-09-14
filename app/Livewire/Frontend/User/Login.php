@@ -32,7 +32,7 @@ class Login extends Component
             'password' =>  $this->password
         ];
         if (Auth::attempt($payload)) {
-            return $this->redirect('/');
+            return $this->dispatch('login-success');
         }
 
         session()->flash('error', 'User or password must be wrong!');

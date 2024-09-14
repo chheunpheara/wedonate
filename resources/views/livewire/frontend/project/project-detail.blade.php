@@ -75,7 +75,7 @@
                 </div>
                 @if($totalDonator > $limit)
                 <div class="row">
-                    <a href="{{ url('/donators/' . $projectID) }}">View all {{ $totalDonator }}+ supporters</a>
+                    <a href="{{ url('/donators/' . $projectID) }}" wire:navigate>View all {{ $totalDonator }}+ supporters</a>
                 </div>
                 @endif
             </div>

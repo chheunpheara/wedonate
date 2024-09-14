@@ -3,6 +3,9 @@
         <div class="row">
             @if($donator > 0)
             <div class="col-sm-6">
+                <h3><span class="text-primary">${{ number_format($raisedAmount, 2) }}</span> Raised</h3>
+                <h6>Deadline: {{ $project->start_date }} &#x2192; {{ $project->due_date }}</h6>
+                <h6>Total supporter: <span class="text-primary">{{ $project->total_donator }}</span></h6>
                 <div class="col-sm-12 mb-5">
                     <embed src="/dummy-chart/{{ \App\Models\User::cryptit($project->id) }}" width="100%" height="300" />
                 </div>
@@ -32,10 +35,9 @@
                     </div>
 
                     <div class="col-sm-12 mb-3">
-                        <label for="media">Upload project banner <span class="text-danger">*</span></label>
+                        <label for="media">Upload project banner <span class="text-danger">*</span> <small class="text-primary">(.png|.jpeg|.jpg|.webp)</small></label>
                         <input type="file" wire:model="banner" id="media" class="form-control">
                         @error('banner') <span class="error text-danger">{{ $message }}</span> @enderror
-                        <small class="text-primary">(.png|.jpeg|.jpg)</small>
                         @if($preview)
                         <div>
                             <img src="{{ asset('storage/resource/images/' . $preview) }}" alt="" height="200">

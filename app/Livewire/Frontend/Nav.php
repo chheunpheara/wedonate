@@ -49,7 +49,7 @@ class Nav extends Component
 
     public function logout() {
         Auth::logout();
-        return $this->redirect('/');
+        $this->dispatch('logout-success');
     }
 
     public function search() {
